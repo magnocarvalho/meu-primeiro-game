@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+    public float velocidade;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
 
-        this.transform.Translate(new Vector2(x, 0));
+        transform.Translate(new Vector2(x, 0) *velocidade);
 
     }
 }
