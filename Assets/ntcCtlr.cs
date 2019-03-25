@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class navemal : MonoBehaviour
+public class ntcCtlr : MonoBehaviour
 {
-    private Rigidbody2D mal;
-    public float velocidade;
     // Start is called before the first frame update
+
+    public GameObject maldoso;
     void Start()
     {
-        velocidade = 6;
-        mal = this.GetComponent<Rigidbody2D>();
-        mal.velocity = new Vector2(0, -1*velocidade);
+        Vector2 posicao = new Vector2(0, 6);
+        Instantiate(maldoso, posicao, Quaternion.identity);
     }
 
     // Update is called once per frame
