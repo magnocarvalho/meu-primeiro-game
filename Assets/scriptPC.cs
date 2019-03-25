@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class scriptPC : MonoBehaviour
 {
     public float velocidade;
     private float largura;
@@ -25,7 +25,7 @@ public class NewBehaviourScript : MonoBehaviour
         //rbd vai "receber" esse RigidBody. Em outras palavras: o rbd passa a representar o Rigidbody deste objeto de jogo.
         //Eu só preciso fazer isso uma vez. Depois disso, rbd sempre estará representando o RigidBody. Por isso esse comando está no método start
         rbd = GetComponent<Rigidbody2D>();
-
+   
     }
 
     // Update is called once per frame
@@ -46,12 +46,12 @@ public class NewBehaviourScript : MonoBehaviour
         //depois
         float dirX = Input.GetAxis("Horizontal");
         float dirY = Input.GetAxis("Vertical");
-
+      
         if (transform.position.x > largura)
-            transform.position = new Vector2(-largura, transform.position.y);
-        else if (transform.position.x < -largura)
+            transform.position = new Vector2(-largura,transform.position.y);
+        else if(transform.position.x < -largura)
             transform.position = new Vector2(largura, transform.position.y);
-        if (transform.position.y > 0 && dirY > 0 || transform.position.y < -altura && dirY < 0)
+        if (transform.position.y > 0 && dirY>0 || transform.position.y < -altura && dirY < 0)
             dirY = 0;
 
         //transform.Translate(new Vector2(dirX,dirY)*Time.deltaTime * velocidade);
@@ -62,6 +62,6 @@ public class NewBehaviourScript : MonoBehaviour
         //A velocidade é representada com duas dimensões (do eixo x e do eixo y). Há um tipo de variáveis que se chama Vector2, que permite que
         //voce armazene dois valores (que será a velocidade que você quer aplicar no eixo x e a velocidade que você que aplicar no eixo y).
         //A criação dessa variável é o new Vector2(valordex, valor de y)
-        rbd.velocity = new Vector2(dirX, dirY) * velocidade;
+        rbd.velocity = new Vector2(dirX,dirY)*velocidade;
     }
 }
