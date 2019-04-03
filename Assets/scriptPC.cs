@@ -11,6 +11,7 @@ public class scriptPC : MonoBehaviour
     //Criando uma variável que servirá como referências ao RigidBody do meu objeto de jogo.
     private Rigidbody2D rbd;
 
+    public AudioSource soz;
     
     void Start()
     {
@@ -37,8 +38,9 @@ public class scriptPC : MonoBehaviour
 
         rbd.velocity = new Vector2(dirX,dirY)*velocidade;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            soz.Play();
             Instantiate(tiro, transform.position, Quaternion.identity);
-        
+        }
     }
 }
