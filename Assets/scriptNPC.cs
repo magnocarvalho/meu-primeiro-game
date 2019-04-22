@@ -16,14 +16,28 @@ public class scriptNPC : MonoBehaviour
         rbd.velocity = new Vector2(0,-1*velocidade);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
-    {
-        Debug.Log("CRASH!!!!");
-    }
-
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Destroy(col.gameObject);
+        if (col.tag == "Projetil")
+        {
+            //Incremente o placar
+            //Debug.Log("Um tiro me acertou e eu sou o vilão!!!");
+            //Trazer para este código, o gameObject do placar
+            //GameObject meuplacar = GameObject.Find("ScoreController");
+            //Pegar, do gameobject, o script do placar
+            //scriptScore script = meuplacar.GetComponent<scriptScore>();
+            //Incrementar o placar
+            //script.addScore(10);
+            scriptScore.addScore(10);
+            Destroy(col.gameObject);
+        }
+        else
+        {
+            //Reduza a vida do PC
+            scriptPC script = col.GetComponent<scriptPC>();
+            script.subtractLife(1);
+
+        }
         Destroy(gameObject);
     }
 
